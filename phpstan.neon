@@ -13,3 +13,8 @@ parameters:
         methods: true
         properties: true
         constants: true
+
+    ignoreErrors:
+        -
+            message: '#Method Symplify\\EasyTesting\\DataProvider\\StaticFixtureFinder\:\:yieldDirectoryExclusively\(\) should return Iterator<mixed, Symplify\\SmartFileSystem\\SmartFileInfo> but returns Iterator<mixed, array<int, Symplify\\SmartFileSystem\\SmartFileInfo>>#'
+            path: src/DataProvider/StaticFixtureFinder.php
