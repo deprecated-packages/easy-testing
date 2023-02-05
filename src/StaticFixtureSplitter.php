@@ -92,7 +92,6 @@ final class StaticFixtureSplitter
             mkdir($dir, 0777, true);
         }
 
-        /** @phpstan-ignore-next-line we don't use SmartFileSystem->dump() for performance reasons */
         file_put_contents($temporaryFilePath, $fileContent);
 
         return new SmartFileInfo($temporaryFilePath);
@@ -125,16 +124,16 @@ final class StaticFixtureSplitter
 
     private static function retypeExpected(mixed $expected): mixed
     {
-        if (! is_numeric(trim($expected))) {
+        if (! is_numeric(trim((string) $expected))) {
             return $expected;
         }
 
         // value re-type
-        if (strlen((string) (int) $expected) === strlen(trim($expected))) {
+        if (strlen((string) (int) $expected) === strlen(trim((string) $expected))) {
             return (int) $expected;
         }
 
-        if (strlen((string) (float) $expected) === strlen(trim($expected))) {
+        if (strlen((string) (float) $expected) === strlen(trim((string) $expected))) {
             return (float) $expected;
         }
 
